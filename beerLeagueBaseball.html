@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Beer League Baseball</title>
+<meta charset= "utf-8">
+<meta name="description" content="This is an assignment for NSS2013" </>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="beerLeagueBaseball.css" type="text/css" media="screen" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- <script src="popover.js" type="text/javascript"></script> -->
+
+<script>
+	$(document).ready(function(){
+		$('#addTeam').click(function(){
+			var Name= $('#inputTeam').val();
+				$('#newTeams').append(
+					'<div class="row-fluid">'
+					+'<div class="span3 new"><h4>'+ Name + '</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>.000</h4></div>'
+					+'</div>'		
+
+
+					); //end of append
+		}); //end of addTeam function
+	 }); //end of doc ready
+
+</script>
+
+
+<style>
+
+    /* Large desktop */
+    @media (min-width: 1200px) { }
+     
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 768px) and (max-width: 979px) {}
+     
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {  }
+     
+    /* Landscape phones and down */
+    @media (max-width: 480px) { .box{ background-color: blue;} }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+  
+    <!-- beginning of main page -->
+<div class="row-fluid">
+	<h1 class="span8 offset2">Beer and Veggie Dogs? League</h1>
+</div>
+	
+<div class="row-fluid">
+	<h2 class="span4 offset4">Standings</h2>
+</div>
+
+<div class="row-fluid">
+	<div class="span8 standings offset1">
+		<div class="row-fluid">
+			<div class="span3"><h2 class="headline2">Team</h2></div>
+			<div class="span3"><h2 class="headline2">W</h2></div>
+			<div class="span3"><h2 class="headline2">L</h2></div>
+			<div class="span3"><h2 class="headline2"> %</h2></div>
+		</div>	
+
+		<div class="row-fluid" id="newTeams">		
+		 
+			
+
+		</div>
+	</div>  <!-- end of standings -->
+</div>			
+			
+
+	<div class="span7 offset1" >
+		
+					<!-- Button to trigger modal -->
+					<a href="#myModal" role="button" class="btn" data-toggle="modal">Add a Team</a>
+					 
+					<!-- Modal -->
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3 id="myModalLabel">Modal header</h3>
+					  </div>
+					  <div class="modal-body">
+					    <form class="form-horizontal">
+					  <div class="control-group">
+					    <label class="control-label" for="inputTeam">Team Name:</label>
+					    <div class="controls">
+					      <input type="text" id="inputTeam" placeholder="Team">
+					    </div>
+					    <label class="control-label" for="inputSponsor">Sponsor</label>
+					    <div class="controls">
+					      <input type="text" id="inputSponsor" placeholder="Sponsor">
+					    </div>
+					    <div class="span2 offset1">Magager Info</div>
+					    	<div class="row-fluid"></div>
+					    <label class="control-label" for="inputMgrFirst">Mgr First Name</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrFirst" placeholder="First">
+					    </div>
+					    <label class="control-label" for="inputMgrLast">Mgr Last Name</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrLast" placeholder="Last">
+					    </div>
+					    <label class="control-label" for="inputMgrPhone">Mgr Phone</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrPhone" placeholder="Phone">
+					    </div>
+					    <label class="control-label" for="inputMgrZip">Mgr Zip Code</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrZip" placeholder="Zip">
+					    </div>
+					    <label class="control-label" for="inputEmail">Mgr Email</label>
+					    <div class="controls">
+					      <input type="text" id="inputEmail" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					  </div>
+					  <div class="control-group">
+					    <!-- <div class="controls">
+					      <button type="submit" class="btn">Sign in</button>
+					    </div> -->
+					  </div>
+					</form>
+
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    <button id="addTeam" data-dismiss="modal" class="btn">Add Team</button>
+					  </div>
+					</div>
+
+<!-- Button to trigger update-->
+					<a href="#myModal" role="button" class="btn" data-toggle="modal">Update Results</a>
+					 
+					<!-- Modal -->
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3 id="myModalLabel">Modal header</h3>
+					  </div>
+					  <div class="modal-body">
+					    <p>One fine body…</p>
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    <button class="btn btn-primary">Save changes</button>
+					  </div>
+					</div>
+
+
+	</div> <!-- end of span7 -->
+
+	
+
+</body>
+
+</html>

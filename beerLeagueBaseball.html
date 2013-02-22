@@ -28,6 +28,7 @@
 		 $("#addT").validate();
 		 
 
+
 $("#addTeam").click(function() {
 		var team_array=[];
 		$(".inputTeam").each(function() {
@@ -36,18 +37,58 @@ $("#addTeam").click(function() {
 			league_array.push(team_array);
 
 			var Name= $('#inputTeam').val();
+				if(league_array.length===1){
 				$('#newTeams').append(
 					'<div class="row-fluid">'
-					+'<div class="span3 new"><h4>'+ Name + '</h4></div>'
+					+'<div class="span3 Pop1" data-trigger="hover" data-toggle="tooltip" data-content="Team Name:'+league_array[0]+'" title="Team Data"><h4>'+ Name + '</h4></div>'
 					+'<div class="span3"><h4>0</h4></div>'
 					+'<div class="span3"><h4>0</h4></div>'
 					+'<div class="span3"><h4>.000</h4></div>'
 					+'</div>' //+ '<h4>' + numT + '</h4>'		
 					); //end of append
-				if(league_array.length===8){
+				};
+				
+				if(league_array.length===2){
+					$('#newTeams').append(
+					'<div class="row-fluid">'
+					+'<div class="span3 Pop1" data-trigger="hover" data-toggle="tooltip" data-content="'+league_array[1]+'" title="Team Data"><h4>'+ Name + '</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>.000</h4></div>'
+					+'</div>' //+ '<h4>' + numT + '</h4>'		
+					); //end of append
+				};
+
+				if(league_array.length===3){
+				$('#newTeams').append(
+					'<div class="row-fluid">'
+					+'<div class="span3 Pop1" data-trigger="hover" data-toggle="tooltip" data-content="'+league_array[2]+'" title="Team Data"><h4>'+ Name + '</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>.000</h4></div>'
+					+'</div>' //+ '<h4>' + numT + '</h4>'		
+					); //end of append
+				};
+
+				if(league_array.length===4){
+				$('#newTeams').append(
+					'<div class="row-fluid">'
+					+'<div class="span3 Pop1" data-trigger="hover" data-toggle="tooltip" data-content="'+league_array[3]+'" title="Team Data"><h4>'+ Name + '</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>0</h4></div>'
+					+'<div class="span3"><h4>.000</h4></div>'
+					+'</div>' //+ '<h4>' + numT + '</h4>'		
+					); //end of append
 					$("#modalTrigger").hide();
 					$("#Sorry").append('<div class="span3"><h3>Sorry, League Full.</h3>');
 				};
+
+
+					// $(".Pop1").hover(function() {
+						// $(function(){
+							$('.Pop1').popover('hide');
+						// });//end of popover function
+					// });//end of hover function
 		});//end of click function
 				$("div.modal[role='dialog']").each(function(i,a){
     		$(a).on('hidden', function(){
@@ -61,14 +102,13 @@ $("#addTeam").click(function() {
 				});  //end of div.modal function		
 
 		
+				
  
 
 		
 }); //end of doc ready
 
-// if (league_array.length ===1) {
-// 	Console.log("hello");
-// } 
+ 
 
 
 </script>

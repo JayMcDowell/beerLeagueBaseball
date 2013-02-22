@@ -21,19 +21,19 @@
 <script src="jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>
 <script>
 	
+			
 		
 	$(document).ready(function(){
-		 $("#addT").validate();
-		 $('#addTeam').click(function(){
 	var league_array=[];
+		 $("#addT").validate();
+		 
 
-// $("#createTeam").click(function() {
-	var team_array=[];
-	$(".inputTeam").each(function() {
+$("#addTeam").click(function() {
+		var team_array=[];
+		$(".inputTeam").each(function() {
 			team_array.push($(this).val());
-	}); //end of teaminputs each function
+		}); //end of teaminputs each function
 			league_array.push(team_array);
-
 
 			var Name= $('#inputTeam').val();
 				$('#newTeams').append(
@@ -44,6 +44,11 @@
 					+'<div class="span3"><h4>.000</h4></div>'
 					+'</div>' //+ '<h4>' + numT + '</h4>'		
 					); //end of append
+				if(league_array.length===8){
+					$("#modalTrigger").hide();
+					$("#Sorry").append('<div class="span3"><h3>Sorry, League Full.</h3>');
+				};
+		});//end of click function
 				$("div.modal[role='dialog']").each(function(i,a){
     		$(a).on('hidden', function(){
         		var allforms = $(this).find('form');
@@ -58,9 +63,12 @@
 		
  
 
-		}); //end of addTeam clickfunction
+		
 }); //end of doc ready
 
+// if (league_array.length ===1) {
+// 	Console.log("hello");
+// } 
 
 
 </script>
@@ -112,7 +120,7 @@
 			
 
 		</div>
-		<div class="row-fluid" id="Test">		
+		<div class="row-fluid" id="Sorry">		
 		 
 			
 
@@ -124,7 +132,7 @@
 	<div class="span7 offset1" >
 		
 					<!-- Button to trigger modal -->
-					<a href="#myModal" role="button" class="btn" data-toggle="modal">Add a Team</a>
+					<a href="#myModal" id="modalTrigger" role="button" class="btn" data-toggle="modal">Add a Team</a>
 					 
 					<!-- Modal -->
 					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

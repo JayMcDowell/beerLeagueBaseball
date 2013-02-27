@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Beer League Baseball</title>
+<meta charset= "utf-8">
+<meta name="description" content="This is an assignment for NSS2013" </>
+
+
+
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="popover.js" type="text/javascript"></script>
+<script src="/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>
+
+<link rel="stylesheet" href="/beerLeagueBaseball.css" type="text/css" media="screen" />
+
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+
+
+<style>
+
+    /* Large desktop */
+    @media (min-width: 1200px) { }
+     
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 768px) and (max-width: 979px) {}
+     
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {  }
+     
+    /* Landscape phones and down */
+    @media (max-width: 480px) { .box{ background-color: blue;} }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+  
+    <!-- beginning of main page -->
+<div class="row-fluid">
+	<h1 class="span8 offset2">Beer and Baseball League</h1>
+</div>
+	
+<div class="row-fluid">
+	<h2 class="span4 offset2">Standings</h2>
+</div>
+
+
+<div class="span12">
+	<table class="striped">	  
+		<tr>	  
+		<td>Team  <div class="span8" ></div> </td>
+		<td>Wins     <div class="span1" ></div>       </td>
+		<td>Losses   <div class="span1" ></div>         </td>
+		<td>Percentage    <div class="span1" ></div>    </td>
+		</tr>	  
+		<tr>	  
+		<td id="name"></td>
+		<td id="wins"></td>
+		<td id="losses"></td>
+		<td id="perc"></td>
+		</tr>	  
+	</table>	  
+</div>
+
+
+
+
+		<div class="row-fluid" id="Sorry">		
+		 
+			
+
+		</div>
+	</div>  <!-- end of standings -->
+</div>			
+			
+
+	<div class="span7 offset1" >
+		
+					<!-- Button to trigger modal -->
+					<a href="#myModal" id="modalTrigger" role="button" class="btn" data-toggle="modal">Add a Team</a>
+					 
+					<!-- Modal -->
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3 id="myModalLabel">Beer and Veggie Dogs?</h3>
+					  </div>
+					  <div class="modal-body">
+					    <form name="form1" id="addT" class="form-horizontal" method="post" action="">
+					  <div class="control-group">
+					    <label class="control-label" for="inputTeam">Team Name:</label>
+					    <div class="controls">
+					      <input type="text" id="inputTeam" name="moniker" value="" class="required inputTeam" minlength="1" placeholder="Team">
+					      <span class="team"> </span>
+					    </div>
+					    <label class="control-label" for="inputSponsor">Sponsor</label>
+					    <div class="controls">
+					      <input type="text" id="inputSponsor" class="required inputTeam" value="" minlength="3" placeholder="Sponsor">
+					      <span class="sponsor"> </span>
+					    </div>
+					    <div class="row-fluid">
+					    <div class="span3 offset1">Manager Info</div></div>
+					    	<div class="row-fluid"></div>
+					    <label class="control-label" for="inputMgrFirst">Mgr First Name</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrFirst" value="" class="required inputTeam" minlength="1" placeholder="First">
+					    </div>
+					    <label class="control-label" for="inputMgrLast">Mgr Last Name</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrLast" value="" class="required inputTeam" minlength="2" placeholder="Last">
+					    </div>
+					    <label class="control-label" for="inputMgrPhone">Mgr Phone</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrPhone" value="" class="required inputTeam" minlength="10" placeholder="Phone">
+					    </div>
+					    <label class="control-label" for="inputMgrZip">Mgr Zip Code</label>
+					    <div class="controls">
+					      <input type="text" id="inputMgrZip" value="" class="required zip inputTeam" minlength="5" placeholder="Zip">
+					    </div>
+					    <label class="control-label" for="inputEmail">Mgr Email</label>
+					    <div class="controls">
+					      <input type="text" id="inputEmail" class="required email inputTeam" value="" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					  </div>
+					  <div class="control-group">
+					    <!-- <div class="controls">
+					      <button type="submit" class="btn">Sign in</button>
+					    </div> -->
+					  </div>
+					</form>
+
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    <button id="addTeam" data-dismiss="modal" type="submit" class="btn">Add Team</button>
+					  </div>
+					</div>
+
+
+                            
+<!-- Button to trigger update-->
+					<a href="#myModal" role="button" class="btn" data-toggle="modal">Update Results</a>
+					 
+					<!-- Modal -->
+					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3 id="myModalLabel">Modal header</h3>
+					  </div>
+					  <div class="modal-body">
+					    <p>One fine body…</p>
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					    <button class="btn btn-primary">Save changes</button>
+					  </div>
+					</div>
+
+
+	</div> <!-- end of span7 -->
+
+	
+
+<script>
+	
+			
+		
+	var league_array=[];
+		$(document).ready(function(){
+		 
+
+		 $("#addT").validate();
+
+			$.ajax({
+	          url: 'backliftapp/jtest35',
+	          type: "GET",
+	          dataType: "json",
+	          success: function (data) {
+	            var league = data;
+	            for(var i=0;i<data.length;i++) {
+	              populateTable(data[i]);
+	              league_array.push(data[i]);                       
+	            } 
+	            checkCount();  
+	          } // end function
+	        }); // end ajax
+
+			$("#addTeam").click(function() {
+// start chris's stuff
+
+          var team=createTeam(); // creates team object
+          
+          $.ajax({
+              url: 'backliftapp/jtest35',
+              type: "POST",
+              dataType: "json",
+              data: team,
+              success: function (data) {              
+              populateTable(data);
+              }
+            });
+
+             function createTeam(){
+            
+            var team = {
+            name: $("#inputTeam").val(),   
+            sponsor: $("#inputSponsor").val(),
+            mgrFirst: $("#inputMgrFirst").val(),
+            mgrLast: $("#inputMgrLast").val(),
+            mgrPhone: $("#inputMgrPhone").val(),
+            mgrZip: $("#inputMgrZip").val(),
+            mgrEmail: $("#inputMgrEmail").val(),
+            wins: 0,
+            losses: 0,
+            perc: .000            
+            };
+                      
+            return team;
+          }
+      
+
+// end chris's stuff
+			
+			league_array.push(team);
+
+			// var Name= $('#inputTeam').val();
+			// 	if(league_array.length===1){
+			// 	$('#newTeams').append(
+			// 		'<div class="row-fluid">'
+			// 		+'<div class="span3 Pop1" data-trigger="hover" data-toggle="tooltip" data-content="Team Name:'+league_array[0]+'" title="Team Data"><h4>'+ Name + '</h4></div>'
+			// 		+'<div class="span3"><h4>0</h4></div>'
+			// 		+'<div class="span3"><h4>0</h4></div>'
+			// 		+'<div class="span3"><h4>.000</h4></div>'
+			// 		+'</div>' //+ '<h4>' + numT + '</h4>'		
+			// 		); //end of append
+			// 	};
+				
+			// checkCount();
+
+		
+
+
+							$('.Pop1').popover('hide');
+					
+		});//end of click function
+				$("div.modal[role='dialog']").each(function(i,a){
+    		$(a).on('hidden', function(){
+        		var allforms = $(this).find('form');
+        		if (allforms.length > 0) {
+            $(allforms).each(function(k,p){
+                $(p)[0].reset();
+            }); //end of allforms function
+        		};  //end of allforms find
+    		});  //end of hidden function
+				});  //end of div.modal function		
+
+		
+				
+ 
+
+		
+}); //end of doc ready
+
+				function checkCount(){
+					if(league_array.length===4){
+			
+					$("#modalTrigger").hide();
+					$("#Sorry").append('<div class="span3 offset2"><h3>Sorry, League Full.</h3>');
+				};
+			};
+ function populateTable(team){
+  	 $('list').append('<div class="row-fluid"></div>');
+  	 $('#name').append('<h4 class="span5 Pop1 alpha" data-trigger="hover" data-toggle="tooltip" data-content="Team Name:'+ team.name +'                '+'Team Sponsor:'+ team.sponsor +'                  '+'Mgr.:'+ team.mgrFirst +' ' + team.mgrLast +'            '+' Mgr. Email:'+ team.mgrEmail+'" title="Team Data">' + team.name + '</h4>');
+     $('#wins').append('<h4>' + team.wins + '</h4>');
+     $('#losses').append('<h4>' + team.losses + '</h4>');
+     $('#perc').append('<h4>' + team.perc + '</h4>');
+ 	 checkCount();
+} //end of populateTable
+
+
+
+</script>
+
+</body>
+
+</html>

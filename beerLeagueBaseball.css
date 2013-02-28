@@ -123,6 +123,14 @@ background-color: #000000;
 	width: 300px;
 	background-color: #eaeaea;
 }
+
+.alpha {
+	margin-left: 0px;
+}
+
+.omega {
+	margin-right: 0px;
+}
 .pic {
 	margin: 80px 0 0 0;
 	background: rgba(0, 0, 0, .2);

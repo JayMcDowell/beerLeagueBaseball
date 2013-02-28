@@ -1,5 +1,16 @@
 body {
+/*    position:absolute;
+	top: -40px;
+	opacity:0.2;*/
 	margin: 0;
+}
+#batter {
+	/*position:absolute;
+	top: -40px;*/
+	opacity:1;
+}
+#TEAMhead {
+	text-align: center;
 }
 .nav {
 background-color: #000000;
@@ -149,7 +160,9 @@ background-color: #000000;
 	height: 140px;
 }
 
-
+#myModalLabel {
+	text-align: center;
+}
 
 /*this begins the validation error stuff*/
 label { 

@@ -9,6 +9,7 @@ body {
 	top: -40px;*/
 	opacity:1;
 }
+
 #TEAMhead {
 	text-align: center;
 }
@@ -152,6 +153,13 @@ background-color: #000000;
 
 }
 
+.clearfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
 .contact {
 	margin: 80px 0 0px 5px;
 	background: rgba(0, 0, 0, .2);

@@ -139,6 +139,63 @@ function deleteTeam(selected){
     }); //end ajax
 }
 
+
+
+// var teamCounter= {}
+// $.ajax({
+// 	  url: 'backliftapp/teams',
+// 	  type: "GET",
+// 	  dataType: "json",
+// 	  success: function (data) {
+// 	var count=0;
+// 			//count teams
+// 			for(var t in data)
+// 				count++;
+			
+	 
+				
+// }  //end of success
+// }); //end of ajax
+
+
+
+
+
+// var x = {tag:"div",css:{backgroundColor:"red"},html:"abc"}
+
+// function objectLength(obj){
+
+// var counter = 0;
+
+// for(var i in obj)
+// {
+// counter +=1;
+// }
+// return counter
+// }
+// use it like this
+
+// alert(objectLength(x))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*helper function to write team data to the screen */
 
 function populateTable(team){    
@@ -151,6 +208,7 @@ function populateTable(team){
     $('#losses').append('<p>' + team.losses + '</p>');
 	$('#percent').append('<p>' + percent.toFixed(3) + '</p>');	 
     $('#delete').append("<button id='"+team.id+"' class='delete-team'>" + "Delete team" + "</button>");  
+// checkCount();
 }
 
 
@@ -385,16 +443,21 @@ function updateTable(){
   }); // end ajax
 }
 
+// var league_array=[];
+
 $(document).ready(function(){
 
+$("#addT").validate();
 	$.ajax({
 	  url: 'backliftapp/teams',
 	  type: "GET",
 	  dataType: "json",
 	  success: function (data) {
 	    for(var i=0;i<data.length;i++) {
-	      populateTable(data[i]); 
-	    }   
+	      populateTable(data[i]);
+	      // league_array.push(data[i]); 
+	    } 
+	    // checkCount();  
 	  } // end function
 	}); // end ajax
 
@@ -413,6 +476,8 @@ $(document).ready(function(){
 		      populateTable(data);                      
 	      	}
 	    });	
+
+// league_array.push(team);
 
 	    $('.Pop1').popover({
 			selector: '[rel=popover]',
@@ -462,3 +527,11 @@ $(document).ready(function(){
 
 
 }); //end ready 
+
+				function checkCount(){
+					if(teamCounter.length===4){  //use .splice when we need to delete team from array.
+
+					$("#modalTrigger").hide();
+					$("#Sorry").append('<div class="span3 offset2"><h3>Sorry, League Full.</h3>');
+				};
+			};

@@ -52,7 +52,7 @@
  
 
     <!-- Button to trigger team info modal -->
-    <button type="button" data-toggle="modal" data-target="#myModal">Add a Team</button>
+    <button type="button" id="modalTrigger" data-toggle="modal" data-target="#myModal">Add a Team</button>
 
    
     <button id="start" type="button">Start season</button>
@@ -116,7 +116,7 @@
 
     <!-- form for adding a team -->
 
-      <form class="form-horizontal">
+      <form class="form-horizontal" id="addT">
         <div class="control-group">
           <label class="control-label">Team name</label>
           <div class="controls">
@@ -127,28 +127,28 @@
         <div class="control-group">
           <label class="control-label">Sponsor</label>
           <div class="controls">
-            <input type="text" id="sponsor" placeholder="Sponsor">
+            <input type="text" class="required" minlength="2" id="sponsor" placeholder="Sponsor">
           </div>
         </div>
         
         <div class="control-group">
           <label class="control-label">Mgr's first name</label>
           <div class="controls">
-            <input type="text" id="mgrFirst" placeholder="First name">
+            <input type="text" id="mgrFirst" class="required" minlength="1" placeholder="First name">
           </div>
         </div>
 
         <div class="control-group">
           <label class="control-label">Mgr's last name</label>
           <div class="controls">
-            <input type="text" id="mgrLast" placeholder="Last name">
+            <input type="text" id="mgrLast" class="required" minlength="1" placeholder="Last name">
           </div>
         </div>
 
         <div class="control-group">
           <label class="control-label">Mgr's zip code</label>
           <div class="controls">
-            <input type="text" id="mgrZip" placeholder="Mgr's zip code">
+            <input type="text" id="mgrZip" class="required" minlength="5" placeholder="Mgr's zip code">
           </div>
         </div>
 

@@ -16,19 +16,7 @@ function printSchedule(){
 
 }
 
-/*
-function writeToDatabase(dest,stuff,func){
-	$.ajax({
-      url: dest,
-      type: "POST",
-      dataType: "json",
-      data: stuff,
-      success: function (data) {              
-  	     func()             
-      }
-	});	// end ajax
-}
-*/
+
 
 
 function createSchedule(printSchedule){
@@ -141,60 +129,6 @@ function deleteTeam(selected){
 
 
 
-// var teamCounter= {}
-// $.ajax({
-// 	  url: 'backliftapp/teams',
-// 	  type: "GET",
-// 	  dataType: "json",
-// 	  success: function (data) {
-// 	var count=0;
-// 			//count teams
-// 			for(var t in data)
-// 				count++;
-			
-	 
-				
-// }  //end of success
-// }); //end of ajax
-
-
-
-
-
-// var x = {tag:"div",css:{backgroundColor:"red"},html:"abc"}
-
-// function objectLength(obj){
-
-// var counter = 0;
-
-// for(var i in obj)
-// {
-// counter +=1;
-// }
-// return counter
-// }
-// use it like this
-
-// alert(objectLength(x))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*helper function to write team data to the screen */
 
@@ -213,21 +147,7 @@ function populateTable(team){
 
 
 function populateSchedule(game){
-	// alert('pS called');
-//	var game={};
-//    for(var w=0;w<3;w++){
-//		for(var g=0;g<2;g++){
-		
-			
-/*			game={
-			player1Name:sched[w][g][0].name,
-			player2Name:sched[w][g][1].name,
-			player1ID:sched[w][g][0].id,
-			player2ID:sched[w][g][1].id,
-			player1Score:0,
-			player2Score:0
-			};	
-*/
+	
 			$.ajax({
 		      url: 'backliftapp/sched',
 		      type: "POST",
@@ -243,21 +163,7 @@ function populateSchedule(game){
 	//	}
 	//}
 	
-/*	$.ajax({
-	  url: 'backliftapp/sched',
-	  type: "GET",
-	  dataType: "json",
-	  success: function (data) {
-	  	for(var i=0;i<data.length;i++){
-	  		$('#game').append('<p>' + data[i].player1Name + ' vs ' + data[i].player2Name + '</p>');
-			$('#score').append('<p>' + data[i].player1Score + '-' + data[i].player2Score + '</p>'); 
-    		$('#report').append("<button id='"+data[i].id+"' class='report-scores'>" + "Report scores" + "</button>");  
-	  		
-	  	}
-	  	
-      }  // end function   
-	}); // end ajax 
-*/
+
 }
 
 function reportScore(selected){

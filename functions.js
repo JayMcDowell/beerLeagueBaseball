@@ -20,14 +20,8 @@ function printSchedule(){
 
 
 function createSchedule(printSchedule){
-	/*var game={
-		player1:{},
-		player2:{},
-		player1Score:0,
-		player2Score:0		 
-	};*/
-	var teamSched=[ [ [],[] ], [ [],[] ], [ [],[] ] ];
 	
+	var teamSched=[ [ [],[] ], [ [],[] ], [ [],[] ] ];
 	
 	/*puts the teams in an array corresponding to the pre-defined schedule */
 
@@ -47,9 +41,7 @@ function createSchedule(printSchedule){
 						}
 					}
 				}
-
-			}
-			
+			}			
 		}
 	  	for(var w=0;w<3;w++){
 			for(var g=0;g<2;g++){
@@ -63,13 +55,11 @@ function createSchedule(printSchedule){
 				player2Score:0
 				};	
 				populateSchedule(game);
-
 			}
 		}
-		printSchedule();
-
 	   } //end success
 	}); // end ajax	
+		printSchedule();
 }  
 	 
 
@@ -103,12 +93,13 @@ function deleteSeason(){
 		      		url: 'backliftapp/sched/' + data[i].id,
 			        type: "DELETE",
 			        dataType: "json",
-			        success: function (data) {  
+			        success: function (data) {
 	      			}
 	    		}); //end ajax
       		}
       	}
     }); //end ajax
+			        // alert ("Season Deleted");  
 }
 
 function deleteTeam(selected){

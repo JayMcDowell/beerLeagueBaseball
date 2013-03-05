@@ -16,8 +16,67 @@ function printSchedule(){
 
 }
 
+function teamLessThan(team1,team2){
+	var bool=false;
+
+	var percent1=team1.wins / (Number(team1.wins) + Number(team1.losses));
+	var percent2=team2.wins / (Number(team2.wins) + Number(team2.losses));
+
+	if(isNaN(percent1)){
+    	percent1=0;
+    }
+    if(isNaN(percent2)){
+    	percent2=0;
+    }
+
+	if (percent1<percent2){
+		bool=true;
+	}
+	return bool;
+}
 
 
+function bubbleSort(a)
+{
+    var swapped;
+    do {
+        swapped = false;
+        for (var i=0; i < a.length-1; i++) {
+            if (teamLessThan(a[i],a[i+1])) {
+                var temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+    return a;
+}
+
+function readFromDatabase(dest){
+	$.ajax({
+      url: dest,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {              
+	    	for(var i=0;i<data.length;i++){
+	    		populateTable(data[i]);
+	    	}
+      }
+	});	// end ajax
+}
+
+function writeToDatabase(dest,stuff){
+	$.ajax({
+      url: dest,
+      type: "POST",
+      dataType: "json",
+      data: stuff,
+      success: function (data) {              
+  	                 
+      }
+	});	// end ajax
+}
 
 function createSchedule(printSchedule){
 	
@@ -57,9 +116,9 @@ function createSchedule(printSchedule){
 				populateSchedule(game);
 			}
 		}
+		printSchedule();
 	   } //end success
 	}); // end ajax	
-		printSchedule();
 }  
 	 
 
@@ -80,27 +139,60 @@ function createTeam(){
 	          
 	return team;
 }
-
 /*deletes the game schedule from the database (used during testing)*/
-function deleteSeason(){
+function deleteDatabase(dest){
 	$.ajax({
-  		url: 'backliftapp/sched',
+  		url: dest,
   		type: "GET",
 	  	dataType: "json",
       	success: function (data) {  
       		for(var i=0;i<data.length;i++){
+      			
+      			alert('delDatabase called');
+
       			$.ajax({
-		      		url: 'backliftapp/sched/' + data[i].id,
+		      		url: dest + '/' + data[i].id,
 			        type: "DELETE",
 			        dataType: "json",
-			        success: function (data) {
+			        success: function (data) {  
 	      			}
 	    		}); //end ajax
       		}
       	}
     }); //end ajax
-			        // alert ("Season Deleted");  
 }
+// /*deletes the game schedule from the database (used during testing)*/
+// function deleteSeason(){
+// 	$.ajax({
+//   		url: 'backliftapp/sched',
+//   		type: "GET",
+// 	  	dataType: "json",
+//       	success: function (data) {  
+//       		for(var i=0;i<data.length;i++){
+//       			$.ajax({
+// 		      		url: 'backliftapp/sched/' + data[i].id,
+// 			        type: "DELETE",
+// 			        dataType: "json",
+// 			        success: function (data) {
+// 			   //      	$.ajax({
+// 						//     url: 'backliftapp/teams/'+ team.id,
+// 						//     type: "PUT",
+// 						//     dataType: "json",
+// 						//     data: {
+// 						//     	wins: 0,
+// 						//     	losses: 0
+// 						//     },
+// 						//     success: function (data) {
+// 						//     	populateTable();
+// 						//     }
+// 						// }); //end ajax
+// 	      			}
+// 	    		}); //end ajax
+//       		}
+//       	}
+//     }); //end ajax
+// 			        // alert ("Season Deleted");  
+// }
 
 function deleteTeam(selected){
 	  var id=$(selected).attr('id');
@@ -123,18 +215,18 @@ function deleteTeam(selected){
 
 /*helper function to write team data to the screen */
 
-function populateTable(team){    
-	var percent=team.wins / (Number(team.wins) + Number(team.losses));
-	if(isNaN(percent)){
-    	percent=0;
-    }
-    $('#name').append('<p class="span5 Pop1 alpha" data-trigger="hover" data-toggle="tooltip" title="Team Name:'+ team.name +'                '+'Team Sponsor:'+ team.sponsor +'                  '+'Mgr.:'+ team.mgrFirst +' ' + team.mgrLast +'            '+' Mgr. Email:'+ team.mgrEmail+'" title="Team Data">' + team.name + '</p>');
-    $('#wins').append('<p>' + team.wins + '</p>');
-    $('#losses').append('<p>' + team.losses + '</p>');
-	$('#percent').append('<p>' + percent.toFixed(3) + '</p>');	 
-    $('#delete').append("<button id='"+team.id+"' class='delete-team'>" + "Delete team" + "</button>");  
-// checkCount();
-}
+	function populateTable(team){    
+		var percent=team.wins / (Number(team.wins) + Number(team.losses));
+		if(isNaN(percent)){
+	    	percent=0;
+	         }
+	    $('#name').append('<p class="span5 Pop1 alpha" data-trigger="hover" data-toggle="tooltip" title="Team Name:'+ team.name +'                '+'Team Sponsor:'+ team.sponsor +'                  '+'Mgr.:'+ team.mgrFirst +' ' + team.mgrLast +'            '+' Mgr. Email:'+ team.mgrEmail+'" title="Team Data">' + team.name + '</p>');
+	    $('#wins').append('<p>' + team.wins + '</p>');
+	    $('#losses').append('<p>' + team.losses + '</p>');
+		$('#percent').append('<p>' + percent.toFixed(3) + '</p>');	 
+	    $('#delete').append("<button id='"+team.id+"' class='delete-team'>" + "Delete team" + "</button>");  
+	// checkCount();
+	}
 
 
 function populateSchedule(game){
@@ -145,10 +237,6 @@ function populateSchedule(game){
 		      dataType: "json",
 		      data: game,
 		      success: function (data) {     
-		    //    $('#game').append('<p>' + data.player1Name + ' vs ' + data.player2Name + '</p>');
-		    //  	$('#score').append('<p>' + data.player1Score + '-' + data.player2Score + '</p>'); 
-			//	$('#report').append("<button id='"+data.id+"' class='report-scores'>" + "Report scores" + "</button>");       
-				
 		      }
 			});	// end ajax		
 	//	}
@@ -247,7 +335,9 @@ function updateScoreTable(){
 	    type: "GET",
 	    dataType: "json",
 	    success: function (data){
+	    	$('#score').html("");
 	    	for(var i=0;i<data.length;i++){
+
 				$('#score').append('<p>' + data[i].player1Score + '-' + data[i].player2Score + '</p>'); 
 
 	    	}
@@ -332,9 +422,15 @@ function updateTable(){
  	    $('#update-button').html('');	
 
 
-        for(var i=0;i<data.length;i++){
-          populateTable(data[i]); 
-        } //end for   
+        
+        var sorted=bubbleSort(data);
+ 	    deleteDatabase('backliftapp/sorted');
+        for(var i=0;i<sorted.length;i++){
+         	writeToDatabase('backliftapp/sorted',sorted[i]);
+        } //end for  
+        for(var i=0;i<sorted.length;i++){
+        	populateTable(sorted[i]);        	
+        }  
       }
     } // end function
   }); // end ajax
@@ -418,9 +514,12 @@ $("#addT").validate();
 	});
 
 	$('body').on('click', '#deleteSeason', function(){
-		deleteSeason();
+		deleteDatabase('backliftapp/sched');
 	});
 
+	$('body').on('click', '#deleteSorted', function(){
+		deleteDatabase('backliftapp/sorted');
+	});
 
 
 }); //end ready 

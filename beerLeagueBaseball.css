@@ -28,7 +28,15 @@ background-color: #000000;
 	font-size: 24px;
 
 }
-
+.report-scores {
+	margin:2px;
+}
+.delete-team {
+	margin:2px;
+}
+#modalTrigger {
+	margin-left: 100px;
+}
 .box {
 	background: rgba(0, 0, 0, .2);
 	padding: 10px 0;

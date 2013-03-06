@@ -1,11 +1,30 @@
 body {
+/*    position:absolute;
+	top: -40px;
+	opacity:0.2;*/
 	margin: 0;
+}
+#batter {
+	/*position:absolute;
+	top: -40px;*/
+	opacity:1;
+}
+
+#TEAMhead {
+	text-align: center;
 }
 .nav {
 background-color: #000000;
 }
 .center { 
 	float: none; margin-left: auto; margin-right: auto; 
+}
+ .box{
+        background: rgba(0,0,0,0.4);
+
+      }
+#indent {
+	margin-left: 20px;
 }
 
 .boot {
@@ -16,7 +35,15 @@ background-color: #000000;
 	font-size: 24px;
 
 }
-
+.report-scores {
+	margin:2.3px;
+}
+.delete-team {
+	margin:2px;
+}
+#modalTrigger {
+	margin-left: 100px;
+}
 .box {
 	background: rgba(0, 0, 0, .2);
 	padding: 10px 0;
@@ -123,6 +150,14 @@ background-color: #000000;
 	width: 300px;
 	background-color: #eaeaea;
 }
+
+.alpha {
+	margin-left: 0px;
+}
+
+.omega {
+	margin-right: 0px;
+}
 .pic {
 	margin: 80px 0 0 0;
 	background: rgba(0, 0, 0, .2);
@@ -133,13 +168,48 @@ background-color: #000000;
 
 }
 
+.clearfix:after {
+	content: ".";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
 .contact {
 	margin: 80px 0 0px 5px;
 	background: rgba(0, 0, 0, .2);
 	padding: 50px 0;
 	text-align: center;
 	height: 140px;
-
-
 }
 
+#myModalLabel {
+	text-align: center;
+}
+
+/*this begins the validation error stuff*/
+label { 
+	width: 10em; 
+	float: left; 
+}
+
+label.error { 
+	float: none; 
+	color: red; 
+	padding-left: .5em; 
+	vertical-align: top; 
+}
+p { 
+	clear: both; 
+}
+
+.submit { 
+	margin-left: 12em; 
+}
+
+em { 
+	font-weight: bold; 
+	padding-right: 1em; 
+	vertical-align: top; 
+}
+/*this ends the validation error stuff*/

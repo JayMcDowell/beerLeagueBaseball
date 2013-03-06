@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Beer Baseball League</title>
+    
+
+   <link type="text/css" rel="stylesheet" href="beerLeagueBaseball.css"></link>
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css"></link>
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css"></link>
+
+    <script src="jquery-1.9.1.js"></script>
+    <!-- // <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script> -->
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="functions.js"></script>
+    <script src="popover.js" type="text/javascript"></script>
+    <script src="/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>
+    
+    
+  
+   
+
+  </head>
+  <body background="BatterSilhouette.jpg" bgcolor="#000000">
+  <body>
+    <div class="span10 offset1"> <!-- wrapper -->
+      <div class="row-fluid">
+    <div class="span3" id="batter"><img src="BallGlove.jpg" alt="" width="200" height="200"> </div>
+    </div> 
+    <div class="row">
+      <div class="span8 offset1"><h1>Beer and Baseball</h1></div>
+    </div>  
+
+    <div class="row box">
+      <div class="span3">Team</div>
+      <div class="span1">W</div>
+      <div class="span1">L</div>
+      <div class="span1">%</div>
+    </div>
+
+    <div class="row">
+      <div class="span3" id="name"></div>
+      <div class="span1" id="wins"></div>
+      <div class="span1" id="losses"></div>
+      <div class="span1" id="percent"></div>
+      <div class="span2" id="delete"></div>
+    </div>
+ 
+
+    <!-- Button to trigger team info modal -->
+    <button type="button" id="modalTrigger" data-toggle="modal" data-target="#myModal">Add a Team</button>
+
+   
+    <button id="start" type="button">Start season</button>
+    <button id="deleteSeason" type="button">Delete season</button>
+
+
+
+    <div class="row box">
+      <div class="span4">Game</div>
+      <div class="span1">Score</div>
+    </div>
+
+    <div class="row">
+      <div class="span4" id="game"></div>
+      <div class="span1" id="score"></div>
+      <div class="span2" id="report"></div>
+    </div>
+
+    <!-- <button type="button" data-toggle="modal" data-target="#scoreModal">Report game scores</button> -->
+
+<!-- Modal for reporting team scores-->
+    <div id="scoreModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Report team scores:</h3>
+    </div>
+
+    <div class="modal-body">
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label id="team1" class="control-label"></label>
+          <div class="controls">
+            <input type="text" id="player1-score" placeholder="Score">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label id="team2" class="control-label"></label>
+          <div class="controls">
+            <input type="text" id="player2-score" placeholder="Score">
+          </div>
+        </div>
+      </form>   
+    </div>
+
+    <div class="modal-footer">
+    <div id="update-button"></div>  
+    <!-- <button id="update" class="btn" data-dismiss="modal" aria-hidden="true">Update results</button> -->
+    <!-- <button class="btn btn-primary">Save changes</button> -->
+    </div>
+    </div>
+
+     
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Team Information</h3>
+    </div>
+    <div class="modal-body">
+
+    <!-- form for adding a team -->
+
+      <form class="form-horizontal" id="addT">
+        <div class="control-group">
+          <label class="control-label">Team name</label>
+          <div class="controls">
+            <input type="text" id="teamName"class="required" minlength="1" placeholder="Team name">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Sponsor</label>
+          <div class="controls">
+            <input type="text" class="required" minlength="2" id="sponsor" placeholder="Sponsor">
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <label class="control-label">Mgr's first name</label>
+          <div class="controls">
+            <input type="text" id="mgrFirst" class="required" minlength="1" placeholder="First name">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Mgr's last name</label>
+          <div class="controls">
+            <input type="text" id="mgrLast" class="required" minlength="1" placeholder="Last name">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Mgr's zip code</label>
+          <div class="controls">
+            <input type="text" id="mgrZip" class="required" minlength="5" placeholder="Mgr's zip code">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Mgr's email</label>
+          <div class="controls">
+            <input type="email" id="mgrEmail" placeholder="Mgr's email">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <!-- <button id="add" type="button">Add a Team</button> -->
+          </div>
+        </div>
+      </form>  
+
+    </div>
+    <div class="modal-footer">
+    <button id="add" class="btn add-team" data-dismiss="modal" aria-hidden="true">Add a Team</button>
+    <!-- <button class="btn btn-primary">Save changes</button> -->
+    </div>
+    </div>
+
+
+      
+
+
+    <!-- <script src="js/backlift-reloader.js"></script> -->
+    </div> <!-- wrapper -->
+   
+  </body>
+</html>

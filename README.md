@@ -9,4 +9,4 @@ Teams are able to be added and there is a "delete team" option.  The modal form 
 Phase Two:
 We used the predefined schedule and added a "start season" button to generate the games.  Each game's score can be updated and that information is stored in the database.  The wins and losses are reflected in the standings.  We used bubble sort to sort the teams by winning percentage.
 
- 
+ The index.html contains our markup.  The functions.js contains our javascript.  The beerleagueBaseball.css contains our style.

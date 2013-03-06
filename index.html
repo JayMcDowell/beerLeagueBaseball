@@ -17,33 +17,29 @@
     <script src="/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>
     
     
-    <style>
-      .box{
-        background: rgba(0,0,0,0.4);
-
-      }
-    </style>
+  
    
 
   </head>
   <body background="BatterSilhouette.jpg" bgcolor="#000000">
   <body>
-    <div class="row-fluid">
+    <div class="span10 offset1"> <!-- wrapper -->
+      <div class="row-fluid">
     <div class="span3" id="batter"><img src="BallGlove.jpg" alt="" width="200" height="200"> </div>
     </div> 
     <div class="row">
-      <div class="span11 offset1"><h1>Beer and Baseball</h1></div>
+      <div class="span8 offset1"><h1>Beer and Baseball</h1></div>
     </div>  
 
     <div class="row box">
-      <div class="span5">Team</div>
+      <div class="span3">Team</div>
       <div class="span1">W</div>
       <div class="span1">L</div>
       <div class="span1">%</div>
     </div>
 
     <div class="row">
-      <div class="span5" id="name"></div>
+      <div class="span3" id="name"></div>
       <div class="span1" id="wins"></div>
       <div class="span1" id="losses"></div>
       <div class="span1" id="percent"></div>
@@ -61,12 +57,12 @@
 
 
     <div class="row box">
-      <div class="span5">Game</div>
+      <div class="span4">Game</div>
       <div class="span1">Score</div>
     </div>
 
     <div class="row">
-      <div class="span5" id="game"></div>
+      <div class="span4" id="game"></div>
       <div class="span1" id="score"></div>
       <div class="span2" id="report"></div>
     </div>
@@ -178,7 +174,7 @@
 
 
     <!-- <script src="js/backlift-reloader.js"></script> -->
-    
+    </div> <!-- wrapper -->
    
   </body>
 </html>

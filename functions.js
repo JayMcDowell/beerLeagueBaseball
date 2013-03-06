@@ -79,9 +79,9 @@ function writeToDatabase(dest,stuff){
 }
 
 function createSchedule(printSchedule){
-	
+
 	var teamSched=[ [ [],[] ], [ [],[] ], [ [],[] ] ];
-	
+
 	/*puts the teams in an array corresponding to the pre-defined schedule */
 
 	$.ajax({
@@ -104,7 +104,7 @@ function createSchedule(printSchedule){
 		}
 	  	for(var w=0;w<3;w++){
 			for(var g=0;g<2;g++){
-		
+
 				game={
 				player1Name:teamSched[w][g][0].name,
 				player2Name:teamSched[w][g][1].name,
@@ -120,7 +120,7 @@ function createSchedule(printSchedule){
 	   } //end success
 	}); // end ajax	
 }  
-	 
+
 
 /*creates team object*/
 function createTeam(){
@@ -136,7 +136,7 @@ function createTeam(){
 	wins: 0,
 	losses: 0            
 	};
-	          
+
 	return team;
 }
 /*deletes the game schedule from the database (used during testing)*/
@@ -230,7 +230,7 @@ function deleteTeam(selected){
 
 
 function populateSchedule(game){
-	
+
 			$.ajax({
 		      url: 'backliftapp/sched',
 		      type: "POST",
@@ -241,7 +241,7 @@ function populateSchedule(game){
 			});	// end ajax		
 	//	}
 	//}
-	
+
 
 }
 
@@ -308,7 +308,7 @@ function modifyTeamData(selected){
 		    	}
 
 		    	modifyScores(gameID,score1,score2);
-				
+
 	    	} //end outer success
     	}); //end ajax
 }	
@@ -459,7 +459,7 @@ $("#addT").validate();
 	$('#add').click(function(){
 
 	  	var team=createTeam(); // creates team object
-	  
+
 	    $.ajax({
 	      	url: 'backliftapp/teams',
      	 	type: "POST",
@@ -500,7 +500,7 @@ $("#addT").validate();
 	/*click event for "Start season" button*/
 	$('body').on('click', '#start', function(){
 		createSchedule(printSchedule);
-		
+
 	});
 
 	/*click event for "Report scores" button*/

@@ -19,6 +19,13 @@ background-color: #000000;
 .center { 
 	float: none; margin-left: auto; margin-right: auto; 
 }
+ .box{
+        background: rgba(0,0,0,0.4);
+
+      }
+#indent {
+	margin-left: 20px;
+}
 
 .boot {
 	background: rgba(0, 0, 0, .2);
@@ -29,7 +36,7 @@ background-color: #000000;
 
 }
 .report-scores {
-	margin:2px;
+	margin:2.3px;
 }
 .delete-team {
 	margin:2px;
